@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Quan ly sinh vien</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+  <!-- change classes -> to you want -->
+    <h1>Danh sach san pham</h1>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId">
+        Create
+      </button>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">ma san pham</th>
+          <th scope="col">ten san pham</th>
+          <th scope="col">so luong</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(let i = 0; i< sanpham.length; i++) { %>
+            <tr>
+                <th scope="row"><%=i%></th>
+                <td><%=sanpham[i].ma_sanpham%></td>
+                <td><%=sanpham[i].ten%></td>
+                <td><%=sanpham[i].soluong%></td>
+                <td>
+                  <a class="btn btn-danger mr-1" href="/sanpham/delete/<%=sanpham[i].ma_sanpham%>">Delete</a>
+                  <a class="btn btn-success" href="/sanpham/update/form/<%=sanpham[i].ma_sanpham%>" >Update</a</td>
+                </td>
+              </tr>
+        <%}%>
+        </tbody>
+    </table>
+     
+      
+      <!-- Modal -->
+      <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title">Modal title</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                  </div>
+                  <div class="modal-body">
+                      <form action="/sanpham/add" method="POST">
+                        <div class="form-group">
+                            <label for="">Ma san pham</label>
+                            <input type="text" name="ma_sanpham" class="form-control" aria-describedby="">
+                          </div>
+                          <div class="form-group">
+                            <label for="">Ten</label>
+                            <input type="text" name="ten" class="form-control" aria-describedby="">
+                          </div>
+                          <div class="form-group">
+                            <label for="">so luong</label>
+                            <input type="text" name="soluong" class="form-control" aria-describedby="">
+                          </div>
+                          <button type="submit" class="btn btn-primary">Add</button>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                 
+                  </div>
+              </div>
+          </div>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
